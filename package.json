@@ -1,0 +1,47 @@
+{
+  "name": "promise-watch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "build": "node npm_scripts/build.js",
+    "build:watch": "node npm_scripts/build.js",
+    "lint": "node npm_scripts/lint.js",
+    "lint:watch": "node npm_scripts/lint_watch.js",
+    "test": "node npm_scripts/test.js",
+    "test:watch": "node npm_scripts/test_watch.js",
+    "all": "node npm_scripts/all.js",
+    "all:watch": "node npm_scripts/all_watch.js",
+    "clean": "node npm_scripts/clean.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/higuri/promise-watch.git"
+  },
+  "keywords": [
+    "Promise",
+    "watch",
+    "state"
+  ],
+  "author": {
+    "name": "Yusuke Higuchi",
+    "email": "higuri36@gmail.com",
+    "url": "https://github.com/higuri"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/higuri/promise-watch/issues"
+  },
+  "homepage": "https://github.com/higuri/promise-watch#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.1.2",
+    "fs-extra": "^7.0.0",
+    "mocha": "^5.2.0",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.3"
+  }
+}
