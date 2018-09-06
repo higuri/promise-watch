@@ -1,11 +1,11 @@
-// Sample.ts
+// main.ts
 
-// Sample
-export class Sample {
+// Main
+export class Main {
   // name
   public name: string;
 
-  // Sample(name)
+  // Main(name)
   constructor(name: string) {
     this.name = name;
   }
