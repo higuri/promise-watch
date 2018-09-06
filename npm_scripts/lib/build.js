@@ -1,6 +1,6 @@
 // lib/build.js
 const fs = require('fs-extra');
-const { spawn } = require('child_process');
+const { run } = require('./npmbin.js');
 
 // build
 function build(watch) {
@@ -8,18 +8,7 @@ function build(watch) {
   if (watch) {
     args.push('--watch');
   }
-  console.log(['tsc'].concat(args).join(' ') + ' ...');
-  return new Promise((resolve, reject) => {
-    spawn(
-      'tsc', args,
-      { stdio: 'inherit' })
-    .on('exit', () => {
-      resolve();
-    })
-    .on('error', (err) => {
-      reject(err);
-    });
-  });
+  return run('tsc', args);
 }
 
 // clean
