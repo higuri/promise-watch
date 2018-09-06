@@ -19,11 +19,12 @@ function run(cmd, args) {
   const cmdpath = binpath(cmd);
   return new Promise((resolve, reject) => {
     spawn(cmdpath, args, { stdio: 'inherit' })
-    .on('exit', () => {
-      resolve();
-    })
-    .on('error', (err) => {
-      reject(err);
+    .on('exit', (code) => {
+      if (code === 0) {
+        resolve();
+      } else {
+        reject(code);
+      }
     });
   });
 }

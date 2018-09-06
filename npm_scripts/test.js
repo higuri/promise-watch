@@ -3,7 +3,6 @@ const { build } = require('./lib/build.js');
 const { test } = require('./lib/test.js');
 build().then(() => {
   return test(); 
-}).catch((err) => {
-  console.log(err);
+}).catch((code) => {
   process.exit(code);
 });

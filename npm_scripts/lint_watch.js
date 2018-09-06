@@ -11,14 +11,11 @@ fs.watch(builddir, () => {
 });
 setInterval(() => {
   if (changed) {
-    lint().catch((err) => {
-      console.log(err);
-    });
+    lint();
     changed = false;
   }
 }, 1000);
 
-build(true).catch((err) => {
-  console.log(err);
+build(true).catch((code) => {
   process.exit(code);
 });

@@ -8,7 +8,6 @@ build().then(() => {
   return lint();
 }).then(() => {
   return test();
-}).catch((err) => {
-  console.log(err);
+}).catch((code) => {
   process.exit(code);
 });

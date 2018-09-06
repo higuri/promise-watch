@@ -1,6 +1,5 @@
 // lint.js
 const { lint } = require('./lib/lint.js');
-lint().catch((err) => {
-  console.log(err);
+lint().catch((code) => {
   process.exit(code);
 });
