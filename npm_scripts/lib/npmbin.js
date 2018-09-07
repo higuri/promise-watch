@@ -18,8 +18,8 @@ function run(cmd, args) {
   console.log([cmd].concat(args).join(' ') + ' ...');
   const cmdpath = binpath(cmd);
   return new Promise((resolve, reject) => {
-    spawn(cmdpath, args, { stdio: 'inherit' })
-    .on('exit', (code) => {
+    const proc = spawn(cmdpath, args, { stdio: 'inherit' });
+    proc.on('exit', (code) => {
       if (code === 0) {
         resolve();
       } else {

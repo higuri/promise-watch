@@ -6,12 +6,8 @@
   "scripts": {
     "build": "node npm_scripts/build.js",
     "build:watch": "node npm_scripts/build_watch.js",
-    "lint": "node npm_scripts/lint.js",
-    "lint:watch": "node npm_scripts/lint_watch.js",
     "test": "node npm_scripts/test.js",
     "test:watch": "node npm_scripts/test_watch.js",
-    "all": "node npm_scripts/all.js",
-    "all:watch": "node npm_scripts/all_watch.js",
     "clean": "node npm_scripts/clean.js"
   },
   "repository": {

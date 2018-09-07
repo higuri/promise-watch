@@ -1,8 +1,10 @@
 // test.js
-const { build } = require('./lib/build.js');
-const { test } = require('./lib/test.js');
-build().then(() => {
-  return test(); 
+const {lintOnBuild} = require('./config.js');
+const {buildTest} = require('./lib/build.js');
+const {runTest} = require('./lib/test.js');
+const watch = false;
+buildTest(watch, lintOnBuild).then(() => {
+  return runTest(); 
 }).catch((code) => {
   process.exit(code);
 });

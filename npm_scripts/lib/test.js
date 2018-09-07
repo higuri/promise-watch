@@ -1,14 +1,14 @@
 // lib/test.js
-const path = require('path');
-const { run } = require('./npmbin.js');
+const {builtTestDir} = require('./build.js');
+const {run} = require('./npmbin.js');
 
-// test()
-function test() {
-  return run('mocha', [path.join('build', 'test')]);
+// runTest()
+function runTest() {
+  return run('mocha', [builtTestDir]);
 }
 
 // clean()
 function clean() {
 }
 
-module.exports = { test, clean };
+module.exports = { runTest, clean };

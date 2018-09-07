@@ -1,17 +1,18 @@
 // test_watch.js
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
-const { build } = require('./lib/build.js');
-const { test } = require('./lib/test.js');
+const { buildTest } = require('./lib/build.js');
+const { runTest } = require('./lib/test.js');
 
-const builddir = path.join('build', 'src');
 let changed = false;
+const builddir = path.join('build', 'src');
+fs.ensureDirSync(builddir);
 fs.watch(builddir, () => {
   changed = true;
 });
 setInterval(() => {
   if (changed) {
-    test().then(() => {
+    runTest().then(() => {
       console.log('Done.');
     }).catch(() => {});
     changed = false;
@@ -19,6 +20,6 @@ setInterval(() => {
   }
 }, 1000);
 
-build(true).catch((code) => {
+buildTest(true).catch((code) => {
   process.exit(code);
 });
