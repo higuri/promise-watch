@@ -11,7 +11,10 @@ fs.watch(builddir, () => {
 });
 setInterval(() => {
   if (changed) {
-    test();
+    test().then(() => {
+      console.log('Done.');
+    }).catch(() => {});
+    changed = false;
     changed = false;
   }
 }, 1000);

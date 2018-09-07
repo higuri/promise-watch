@@ -11,7 +11,9 @@ fs.watch(builddir, () => {
 });
 setInterval(() => {
   if (changed) {
-    lint();
+    lint().then(() => {
+      console.log('Done.');
+    }).catch(() => {});
     changed = false;
   }
 }, 1000);
