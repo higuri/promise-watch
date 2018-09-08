@@ -1,9 +1,9 @@
 // lib/lint.js
 const path = require('path');
-const { run } = require('./npmbin.js');
+const {run} = require('./npmbin.js');
 
-// lint()
-function lint(target) {
+// doLint()
+function doLint(target) {
   return run('tslint', [
     '--config', path.join('config', 'tslint.json'),
     '--project', path.join(target, 'tsconfig.json')
@@ -12,16 +12,16 @@ function lint(target) {
 
 // lintSrc()
 function lintSrc() {
-  return lint('src');
+  return doLint('src');
 }
 
 // lintTest()
 function lintTest() {
-  return lint('test');
+  return doLint('test');
 }
 
 // clean()
 function clean() {
 }
 
-module.exports = { lintSrc, lintTest, clean };
+module.exports = { doLint, lintSrc, lintTest, clean };

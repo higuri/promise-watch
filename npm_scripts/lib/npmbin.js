@@ -1,7 +1,7 @@
 // lib/npmbin.js
 const os = require('os');
 const path = require('path');
-const { spawn } = require('child_process');
+const {spawn} = require('child_process');
 
 // binpath()
 function binpath(cmd) {
@@ -29,4 +29,4 @@ function run(cmd, args) {
   });
 }
 
-module.exports = { run };
+module.exports = { binpath, run };
