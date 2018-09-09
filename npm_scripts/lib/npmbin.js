@@ -15,7 +15,7 @@ function binpath(cmd) {
 
 // run()
 function run(cmd, args) {
-  console.log([cmd].concat(args).join(' ') + ' ...');
+  console.log([cmd].concat(args).join(' ') + '...');
   const cmdpath = binpath(cmd);
   return new Promise((resolve, reject) => {
     const proc = spawn(cmdpath, args, { stdio: 'inherit' });

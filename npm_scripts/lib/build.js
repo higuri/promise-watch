@@ -11,76 +11,49 @@ const builtSrcDir = path.join('build', 'src');
 // buildTestDir
 const builtTestDir = path.join('build', 'src');
 
-// createBuildProc
-function createBuildProc(target, watch) {
+// doBuild()
+function doBuild(target, watch) {
   const cmd = binpath('tsc');
   let args = ['--project', target];
   if (watch) {
     args.push('--watch');
   }
-  console.log(['tsc'].concat(args).join(' ') + ' ...');
+  console.log(['tsc'].concat(args).join(' ') + '...');
   const proc = spawn(cmd, args, { stdio: 'pipe' });
   proc.stdout.pipe(process.stdout);
   proc.stderr.pipe(process.stderr);
-  return proc;
-}
-
-// doBuild
-function doBuild(target) {
-  return new Promise((resolve, reject) => {
-    const proc = createBuildProc(target);
+  const promise = new Promise((resolve, reject) => {
     proc.on('exit', (code) => {
       if (code === 0) {
         resolve();
       } else {
-        reject(code);
+        reject();
       }
     });
   });
-}
-
-// BuildWatch
-// TODO: cleanup
-class BuildWatch extends EventEmitter {
-
-  build(target) {
-    const proc = createBuildProc(target, true);
+  if (watch) {
+    // TODO: cleanup: Promise + EventEmitter
+    const emitter = new EventEmitter();
+    promise.on = emitter.on
+    promise.emit = emitter.emit
     proc.stdout.on('data', (buffer) => {
       const line = buffer.toString('utf8');
       if (line.includes('Found 0 errors.')) {
-        this.emit('compiled');
+        promise.emit('compiled');
       }
     });
-    proc.on('exit', (code) => {
-      this.emit('exit', code);
-    });
   }
+  return promise;
 }
-
-// doBuildWatch()
-function doBuildWatch(target) {
-  const watch = new BuildWatch();
-  watch.build(target);
-  return watch;
-}
-
 
 // async buildSrc()
 function buildSrc(watch = false) {
-  if (watch) {
-    return doBuildWatch('src', watch);
-  } else {
-    return doBuild('src');
-  }
+  return doBuild('src', watch);
 }
 
 // buildTest()
 function buildTest(watch = false) {
-  if (watch) {
-    return doBuildWatch('test', watch);
-  } else {
-    return doBuild('test');
-  }
+  return doBuild('test', watch);
 }
 
 // clean
