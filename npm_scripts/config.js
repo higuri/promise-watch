@@ -1,2 +1,4 @@
 // config.js
-module.exports.lintOnBuild = true;
+module.exports = {
+  lintOnBuild: true
+};

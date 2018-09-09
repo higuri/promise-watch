@@ -9,7 +9,7 @@ const {binpath} = require('./npmbin.js');
 // builtSrcDir
 const builtSrcDir = path.join('build', 'src');
 // buildTestDir
-const builtTestDir = path.join('build', 'src');
+const builtTestDir = path.join('build', 'test');
 
 // doBuild()
 function doBuild(target, watch) {
