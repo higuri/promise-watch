@@ -41,7 +41,6 @@ function doBuild(target) {
 
 // BuildWatch
 // TODO: cleanup
-// TODO: buildTest: test/**/*.* not watched ?
 class BuildWatch extends EventEmitter {
 
   build(target) {
@@ -78,7 +77,7 @@ function buildSrc(watch = false) {
 // buildTest()
 function buildTest(watch = false) {
   if (watch) {
-    return doBuildWatch('src', watch);
+    return doBuildWatch('test', watch);
   } else {
     return doBuild('test');
   }
