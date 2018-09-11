@@ -9,20 +9,15 @@ export class Watch {
   private promises = new Array<Promise<any>>();
   // added:
   private added = new Event<Promise<any>>();
-  // removed:
-  private removed = new Event<Promise<any>>();
+  // oneSettled:
+  private oneSettled = new Event<Promise<any>>();
+  // allSettled:
+  // TODO: Event<void>
+  private allSettled = new Event<any>();
 
-  // waitings:
-  public get waitings(): Array<Promise<any>> {
+  // pendings:
+  public get pendings(): Array<Promise<any>> {
     return this.promises;
-  }
-
-  // run()
-  public run(promise: Promise<any>): Promise<any> {
-    promise.then(() => this.remove(promise));
-    promise.catch(() => this.remove(promise));
-    this.add(promise);
-    return promise;
   }
 
   // onAdded()
@@ -30,19 +25,37 @@ export class Watch {
     this.added.subscribe(h);
   }
 
-  // onRemoved()
-  public onRemoved(h: EventHandler<Promise<any>>): void {
-    this.removed.subscribe(h);
+  // onOneSettled()
+  public onOneSettled(h: EventHandler<Promise<any>>): void {
+    this.oneSettled.subscribe(h);
   }
+
+  // onAllSettled()
+  public onAllSettled(h: EventHandler<any>): void {
+    this.allSettled.subscribe(h);
+  }
+
+  // run()
+  public run(promise: Promise<any>): Promise<any> {
+    promise.then(() => this.settle(promise));
+    promise.catch(() => this.settle(promise));
+    this.add(promise);
+    return promise;
+  }
+
+  ///
 
   // add()
   private add(promise: Promise<any>): void {
     this.promises.push(promise);
     this.added.emit(promise);
   }
-  // remove()
-  private remove(promise: Promise<any>): void {
+  // settle()
+  private settle(promise: Promise<any>): void {
     this.promises = this.promises.filter((p) => p !== promise);
-    this.removed.emit(promise);
+    this.oneSettled.emit(promise);
+    if (this.promises.length === 0) {
+      this.allSettled.emit(null);
+    }
   }
 }

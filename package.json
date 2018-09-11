@@ -1,7 +1,7 @@
 {
   "name": "promise-watch",
   "version": "1.0.0",
-  "description": "",
+  "description": "Watch promises whether all settled or not",
   "main": "",
   "scripts": {
     "start": "node build/src/main.js",

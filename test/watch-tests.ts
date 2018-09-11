@@ -18,10 +18,8 @@ describe("Watch", function() {
     watch.onAdded(() => {
       isWaiting = true;
     });
-    watch.onRemoved(() => {
-      if (watch.waitings.length < 1) {
-        isWaiting = false;
-      }
+    watch.onAllSettled(() => {
+      isWaiting = false;
     });
     watch.run(wait(5000));
     watch.run(wait(500));
