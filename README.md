@@ -15,35 +15,42 @@ This module watches promises which have been made, and tells whether all promise
 ## Installing
 
 ## Sample Usage
-### Demo Page
-### Code Fragment
+[Demo Page](https://higuri.github.io/promise-watch/)
+
+### Code Snippet from Demo Page
 ```javascript
 import {Watch} from "promise-watch";
-// watch
+
+// creadte Watch instance
 const watch = new Watch();
+
+// subscribe 'added' event
 watch.onAdded(() => {
   if (loader.classList.contains("hidden")) {
     loader.classList.remove("hidden");
   }
 });
+// subscribe 'allSettled' event
 watch.onAllSettled(() => {
   loader.classList.add("hidden");
 });
+
 button.addEventListener("click", async() => {
   log(textarea, "Start Waiting...");
+  // run asynchronous task through watch.run()
   await watch.run(start3SecTask());
   log(textarea, "Waited for 3 sec");
 });
 ```
+[full version](https://higuri.github.io/promise-watch/script.js)
 
-## API
-### class `Watch`
-#### Method
-##### `run(_: Promise<any>): Promise<any>`
-#### Method (for subscribing events)
-##### `onAdded(_: (Promise<any>) => void): void`
-##### `onAllSettled(_: () => void): void`
-##### `onOneSettled(_: (Promise<any>) => void): void`
-#### Property
-##### `pendings: Array<Promise<any>>`
+## class `Watch`
+### Method
+#### `run(_: Promise<any>): Promise<any>`
+### Method (for subscribing events)
+#### `onAdded(_: (Promise<any>) => void): void`
+#### `onAllSettled(_: () => void): void`
+#### `onOneSettled(_: (Promise<any>) => void): void`
+### Property
+#### `pendings: Array<Promise<any>>`
 
