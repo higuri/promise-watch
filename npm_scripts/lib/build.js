@@ -70,12 +70,12 @@ async function build(target, watch = false, lint = false) {
 
 // async buildSrc()
 async function buildSrc(watch = false, lint = false) {
-  build('src', watch, lint);
+  await build('src', watch, lint);
 }
 
 // buildTest()
 async function buildTest(watch = false, lint = false) {
-  build('test', watch, lint);
+  await build('test', watch, lint);
 }
 
 // clean
