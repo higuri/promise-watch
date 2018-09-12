@@ -13,6 +13,9 @@ This module watches promises which have been made, and tells whether all promise
 > [Promise - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#Description)  
 
 ## Installing
+```
+npm install promise-watch
+```
 
 ## Sample Usage
 [Demo Page](https://higuri.github.io/promise-watch/)
