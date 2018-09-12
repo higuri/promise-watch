@@ -1,18 +1,13 @@
 // build_watch.js
-const fs = require('fs');
 const {buildSrc} = require('./lib/build.js');
-const {lintSrc} = require('./lib/lint.js');
 const {lintOnBuild} = require('./config.js');
+const watch = true;
 
 (async () => {
-  const build = buildSrc(true);
-  if (lintOnBuild) {
-    build.on('compiled', async() => {
-      try {
-        await lintSrc();
-        console.log('Done.');
-      } catch(_) {}
-    });
+  try {
+    await buildSrc(watch, lintOnBuild);
+  } catch (err) {
+    console.log(err);
+    process.exit(1);
   }
-  await build;
 })();

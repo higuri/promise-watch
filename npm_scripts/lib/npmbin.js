@@ -23,7 +23,7 @@ function run(cmd, args) {
       if (code === 0) {
         resolve();
       } else {
-        reject(code);
+        reject(`Exit with error code(${code})`);
       }
     });
   });

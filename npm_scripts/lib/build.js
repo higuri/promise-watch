@@ -4,11 +4,12 @@ const {EventEmitter} = require('events');
 const path = require('path');
 const {spawn} = require('child_process');
 const {binpath} = require('./npmbin.js');
+const {doLint} = require('./lint.js');
 
 // cf. config/tsconfig-base.json#outDir
 // builtSrcDir
 const builtSrcDir = path.join('build', 'src');
-// buildTestDir
+// builtTestDir
 const builtTestDir = path.join('build', 'test');
 
 // doBuild()
@@ -46,14 +47,35 @@ function doBuild(target, watch) {
   return promise;
 }
 
+// build()
+async function build(target, watch = false, lint = false) {
+  if (watch) {
+    const build = doBuild(target, true);
+    if (lint) {
+      build.on('compiled', async() => {
+        try {
+          await doLint(target);
+          console.log('Done.');
+        } catch(_) {}
+      });
+    }
+    await build;
+  } else {
+    await doBuild(target, false);
+    if (lint) {
+      await doLint(target);
+    }
+  }
+}
+
 // async buildSrc()
-function buildSrc(watch = false) {
-  return doBuild('src', watch);
+async function buildSrc(watch = false, lint = false) {
+  build('src', watch, lint);
 }
 
 // buildTest()
-function buildTest(watch = false) {
-  return doBuild('test', watch);
+async function buildTest(watch = false, lint = false) {
+  build('test', watch, lint);
 }
 
 // clean
