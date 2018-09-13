@@ -1,5 +1,6 @@
 // script.js
-import {Watch} from "./lib/watch.js";
+
+import {PromiseWatch} from "./lib/watch.js";
 
 // start3SecTask()
 function start3SecTask() {
@@ -20,18 +21,24 @@ const textarea = document.querySelector("#textarea");
 // button
 const button = document.querySelector("#button");
 
-// watch
-const watch = new Watch();
+///
+
+// create a watch object
+const watch = new PromiseWatch();
+// subscribe 'added' event
 watch.onAdded(() => {
   if (loader.classList.contains("hidden")) {
     loader.classList.remove("hidden");
   }
 });
+// subscribe 'allSettled' event
 watch.onAllSettled(() => {
   loader.classList.add("hidden");
 });
+
 button.addEventListener("click", async() => {
-  log(textarea, "Task Started...");
+  log(textarea, "Start a task...");
+  // run an asynchronous task through watch object
   await watch.run(start3SecTask());
-  log(textarea, "Task Done !!");
+  log(textarea, "Task finished !!");
 });
