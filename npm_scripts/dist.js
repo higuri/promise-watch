@@ -3,8 +3,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const {clean, buildSrc, builtSrcDir} = require('./lib/build.js');
 const dist = 'dist';
-const entries = ['watch', 'event'];
-const exts = ['.js', '.d.ts'];
+const extnames = ['.js', '.ts'];
 
 (async() => {
   try {
@@ -12,13 +11,16 @@ const exts = ['.js', '.d.ts'];
     await buildSrc();
     fs.removeSync(dist);
     fs.mkdirSync(dist);
-    for (const f of entries) {
-      for (const e of exts) {
-        fs.copySync(
-          path.join(builtSrcDir, f + e),
-          path.join(dist, f + e));
-      }
-    }
+    fs.readdirSync(builtSrcDir)
+    .filter((fname) => {
+      const extname = path.extname(fname);
+      return extnames.includes(extname);
+    })
+    .forEach((fname) => {
+      fs.copySync(
+        path.join(builtSrcDir, fname),
+        path.join(dist, fname));
+    });
   } catch (err) {
     console.log(err);
     process.exit(1);

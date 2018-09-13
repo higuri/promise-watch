@@ -2,8 +2,8 @@
 
 import {Event, EventHandler} from "./event";
 
-// Watch
-export class Watch {
+// PromiseWatch
+export class PromiseWatch {
 
   // promises:
   private promises = new Array<Promise<any>>();

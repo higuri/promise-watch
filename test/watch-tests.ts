@@ -1,7 +1,7 @@
 // watch-tests.ts
 
 import { assert } from "chai";
-import { Watch } from "../src/watch";
+import { PromiseWatch } from "../src/watch";
 
 // wait()
 function wait(msec: number): Promise<number> {
@@ -10,10 +10,10 @@ function wait(msec: number): Promise<number> {
   });
 }
 
-describe("Watch", function() {
+describe("PromiseWatch", function() {
   it("should be used like this", function(done) {
     this.timeout(10000);
-    const watch = new Watch();
+    const watch = new PromiseWatch();
     let isWaiting = false;
     watch.onAdded(() => {
       isWaiting = true;

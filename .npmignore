@@ -1,3 +1,4 @@
-# exclude everything except dist
+# exclude everything except dist and src
 **/*
 !dist/**
+!src/**

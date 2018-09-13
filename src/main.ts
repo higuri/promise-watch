@@ -1,4 +1,4 @@
 // main.ts
 
-import {Watch} from "./watch";
-export {Watch};
+import {PromiseWatch} from "./watch";
+export {PromiseWatch};
