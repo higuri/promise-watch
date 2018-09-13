@@ -2,8 +2,8 @@
   "name": "promise-watch",
   "version": "1.1.1",
   "description": "Watch promises whether all settled or not",
-  "main": "dist/watch.js",
-  "types": "dist/watch.d.ts",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
   "scripts": {
     "start": "node build/src/main.js",
     "build": "node npm_scripts/build.js",
