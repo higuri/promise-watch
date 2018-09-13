@@ -22,11 +22,10 @@ npm install promise-watch
 
 ### Code Snippet from Demo Page
 ```javascript
-import {Watch} from "promise-watch";
+import {PromiseWatch} from "promise-watch";
 
-// creadte Watch instance
-const watch = new Watch();
-
+// create a watch instance
+const watch = new PromiseWatch();
 // subscribe 'added' event
 watch.onAdded(() => {
   if (loader.classList.contains("hidden")) {
@@ -39,15 +38,15 @@ watch.onAllSettled(() => {
 });
 
 button.addEventListener("click", async() => {
-  log(textarea, "Start Waiting...");
-  // run asynchronous task through watch.run()
+  log(textarea, "Start a task...");
+  // run an asynchronous task through watch.run()
   await watch.run(start3SecTask());
-  log(textarea, "Waited for 3 sec");
+  log(textarea, "Task finished !!");
 });
 ```
 [full version](https://higuri.github.io/promise-watch/script.js)
 
-## class `Watch`
+## class `PromiseWatch`
 ### Method
 #### `run(_: Promise<any>): Promise<any>`
 ### Method (for subscribing events)
