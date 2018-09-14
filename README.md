@@ -17,12 +17,22 @@ This module watches promises which have been made, and tells whether all promise
 npm install promise-watch
 ```
 
-## Sample Usage
-[Demo Page](https://higuri.github.io/promise-watch/)
+## Usage example
+https://higuri.github.io/promise-watch/
 
-### Code Snippet from Demo Page
+### Code snippet from example page
 ```javascript
-import {PromiseWatch} from "promise-watch";
+const {PromiseWatch} = require("promise-watch");
+
+function log(textarea, msg) { ... }
+async function start3SecTask() { ... }
+
+// loader: loading icon
+const loader = document.querySelector(...);
+// textarea: status lines
+const textarea = document.querySelector(...);
+// button: start a task
+const button = document.querySelector(...);
 
 // create a watch instance
 const watch = new PromiseWatch();
@@ -44,7 +54,7 @@ button.addEventListener("click", async() => {
   log(textarea, "Task finished !!");
 });
 ```
-[full version](https://higuri.github.io/promise-watch/script.js)
+[full version](https://higuri.github.io/promise-watch/jscss/main.js)
 
 ## class `PromiseWatch`
 ### Method
@@ -55,4 +65,3 @@ button.addEventListener("click", async() => {
 #### `onOneSettled(_: (Promise<any>) => void): void`
 ### Property
 #### `pendings: Array<Promise<any>>`
-
