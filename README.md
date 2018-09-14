@@ -57,11 +57,57 @@ button.addEventListener("click", async() => {
 [full version](https://higuri.github.io/promise-watch/jscss/main.js)
 
 ## class `PromiseWatch`
+### Constructor
+#### `PromiseWatch()`
+Example:
+```javascript
+const watch = new PromiseWatch();
+```
+
 ### Method
 #### `run(_: Promise<any>): Promise<any>`
+Example:
+```javascript
+watch.run(asyncFunctionFoo(...))
+.then(() => {
+  // lines to be executed after Foo() ...
+});
+```
+```javascript
+await watch.run(someAsyncFunctionFoo(...));
+// lines to be executed after Foo() ...
+```
+```javascript
+watch.run(someAsyncFunctionFoo(...));
+// lines to be executed in asynchronously with Foo() ...
+```
+
 ### Method (for subscribing events)
 #### `onAdded(_: (Promise<any>) => void): void`
+Example:
+```javascript
+watch.onAdded(() => {
+  console.log("There are one ore more pending tasks!");
+});
+```
+
 #### `onAllSettled(_: () => void): void`
+Example:
+```javascript
+watch.onAllSettled(() => {
+  console.log("There are no pending tasks!");
+});
+```
+
 #### `onOneSettled(_: (Promise<any>) => void): void`
+```javascript
+watch.onOneSettled(() => {
+  console.log("A promise is resolved or rejected!");
+});
+```
+
 ### Property
 #### `pendings: Array<Promise<any>>`
+```javascript
+console.log(`Number of pending tasks: ${watch.pendings.length}`);
+```
