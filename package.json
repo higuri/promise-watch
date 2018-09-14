@@ -10,7 +10,7 @@
     "build:watch": "node npm_scripts/build_watch.js",
     "test": "node npm_scripts/test.js",
     "test:watch": "node npm_scripts/test_watch.js",
-    "dist": "node npm_scripts/dist.js",
+    "prepublishOnly": "node npm_scripts/dist.js",
     "clean": "node npm_scripts/clean.js"
   },
   "repository": {
