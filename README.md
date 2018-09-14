@@ -58,14 +58,12 @@ button.addEventListener("click", async() => {
 
 ## class `PromiseWatch`
 ### Constructor
-#### `PromiseWatch()`
 Example:
 ```javascript
 const watch = new PromiseWatch();
 ```
 
-### Method
-#### `run(_: Promise<any>): Promise<any>`
+### `run(_: Promise<any>): Promise<any>`
 Example:
 ```javascript
 watch.run(asyncFunctionFoo(...))
@@ -82,8 +80,7 @@ watch.run(someAsyncFunctionFoo(...));
 // lines to be executed in asynchronously with Foo() ...
 ```
 
-### Method (for subscribing events)
-#### `onAdded(_: (Promise<any>) => void): void`
+### `onAdded(_: (Promise<any>) => void): void`
 Example:
 ```javascript
 watch.onAdded(() => {
@@ -91,7 +88,7 @@ watch.onAdded(() => {
 });
 ```
 
-#### `onAllSettled(_: () => void): void`
+### `onAllSettled(_: () => void): void`
 Example:
 ```javascript
 watch.onAllSettled(() => {
@@ -99,15 +96,16 @@ watch.onAllSettled(() => {
 });
 ```
 
-#### `onOneSettled(_: (Promise<any>) => void): void`
+### `onOneSettled(_: (Promise<any>) => void): void`
+Example:
 ```javascript
 watch.onOneSettled(() => {
   console.log("A promise is resolved or rejected!");
 });
 ```
 
-### Property
-#### `pendings: Array<Promise<any>>`
+### `pendings: Array<Promise<any>>`
+Example:
 ```javascript
 console.log(`Number of pending tasks: ${watch.pendings.length}`);
 ```
