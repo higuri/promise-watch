@@ -4,6 +4,7 @@
   "description": "",
   "main": "",
   "scripts": {
+    "build": "browserify jscss/main.js > jscss/bundle.js",
     "start": "http-server ."
   },
   "repository": {
@@ -18,6 +19,8 @@
   },
   "homepage": "https://github.com/higuri/promise-watch#readme",
   "dependencies": {
-    "http-server": "^0.11.1"
+    "browserify": "^16.2.2",
+    "http-server": "^0.11.1",
+    "promise-watch": "^1.1.2"
   }
 }
