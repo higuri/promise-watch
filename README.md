@@ -1,7 +1,7 @@
 # promise-watch
 [![Build Status](https://travis-ci.org/higuri/promise-watch.svg?branch=master)](https://travis-ci.org/higuri/promise-watch)
 
-This module watches promises which have been made, and tells whether all promises have been settled or not.
+This module watches promise objects which have been made, and tells whether all promises have been settled or not.
 
 ### settled
 
@@ -84,7 +84,7 @@ watch.run(someAsyncFunctionFoo(...));
 Example:
 ```javascript
 watch.onAdded(() => {
-  console.log("There are one ore more pending tasks!");
+  console.log("There are one or more pending tasks!");
 });
 ```
 
@@ -100,7 +100,7 @@ watch.onAllSettled(() => {
 Example:
 ```javascript
 watch.onOneSettled(() => {
-  console.log("A promise is resolved or rejected!");
+  console.log("A promise is fulfilled or rejected!");
 });
 ```
 
