@@ -1,4 +1,4 @@
-// script.js
+// main.js
 
 const {PromiseWatch} = require("promise-watch");
 
@@ -16,11 +16,11 @@ function log(textarea, msg) {
 
 // main()
 function main() {
-  // loader
+  // loader: loading icon
   const loader = document.querySelector("#loader");
-  // textarea
+  // textarea: status lines
   const textarea = document.querySelector("#textarea");
-  // button
+  // button: start a task
   const button = document.querySelector("#button");
 
   ///
@@ -40,7 +40,7 @@ function main() {
 
   button.addEventListener("click", async() => {
     log(textarea, "Start a task...");
-    // run an asynchronous task through watch object
+    // run an asynchronous task through watch.run()
     await watch.run(start3SecTask());
     log(textarea, "Task finished !!");
   });
