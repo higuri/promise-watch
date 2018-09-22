@@ -3,7 +3,7 @@
 
 This module watches promise objects which have been made, and tells whether all promises have been settled or not.
 
-### settled
+## Note about terminology
 
 > A Promise is in one of these states:  
 > ・pending: initial state, neither fulfilled nor rejected.  
