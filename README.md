@@ -111,4 +111,4 @@ console.log(`Number of pending tasks: ${watch.pendings.length}`);
 ```
 
 ## License
-[MIT license](https://github.com/higuri/axis.wavesurfer.js/blob/master/LICENSE)
+[MIT license](https://github.com/higuri/promise-watch/blob/master/LICENSE)
