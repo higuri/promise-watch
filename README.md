@@ -1,7 +1,7 @@
 # promise-watch
 [![Build Status](https://travis-ci.org/higuri/promise-watch.svg?branch=master)](https://travis-ci.org/higuri/promise-watch) [![Greenkeeper badge](https://badges.greenkeeper.io/higuri/promise-watch.svg)](https://greenkeeper.io/)
 
-This module watches promise objects which have been made, and tells whether all promises have been settled or not.
+A node module that watches whether all promises have been settled or not.
 
 ## Note about terminology
 
