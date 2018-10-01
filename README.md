@@ -109,3 +109,6 @@ Example:
 ```javascript
 console.log(`Number of pending tasks: ${watch.pendings.length}`);
 ```
+
+## License
+[MIT license](https://github.com/higuri/axis.wavesurfer.js/blob/master/LICENSE)
