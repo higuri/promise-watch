@@ -1,7 +1,6 @@
 {
   "name": "promise-watch",
   "version": "1.1.5",
-  "description": "Watch whether all settled or not",
   "description": "Watch whether all promises have been settled or not",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
